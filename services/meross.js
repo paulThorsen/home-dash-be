@@ -10,6 +10,7 @@ const options = {
     timeout: 3000, // Default is 3000
 };
 
+// This behaves as a singleton.
 const meross = new MerossCloud(options);
 
 module.exports = meross;
