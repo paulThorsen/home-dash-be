@@ -10,8 +10,9 @@ garageWebsocket.on('connection', function connection(ws) {
             console.log('DEV: ' + deviceId + ' connected');
 
             device.getSystemAllData((err, res) => {
+                if (!res || err) ws.emit('error', 'Unable to get system data: ' + err);
                 // Send initial garage door state
-                ws.send(JSON.stringify(res.all.digest.garageDoor[0]));
+                ws.send(JSON.stringify(res?.all.digest.garageDoor[0]));
             });
         });
     });

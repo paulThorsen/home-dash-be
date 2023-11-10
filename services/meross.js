@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+require('../utils/dotenv-control');
 
 const MerossCloud = require('meross-cloud');
 const options = {
