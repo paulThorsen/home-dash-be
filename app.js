@@ -1,12 +1,25 @@
+require('./utils/dotenv-control');
+
 const createError = require('http-errors');
 const express = require('express');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const garageRouter = require('./routes/garage');
 const app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+const corsOptions = {
+    origin: process.env.ALLOWED_ORIGIN,
+};
+
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
