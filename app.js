@@ -6,6 +6,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const interceptLogs = require('./utils/log-interceptor');
 
 const indexRouter = require('./routes/index');
 const garageRouter = require('./routes/garage');
@@ -14,6 +15,8 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+interceptLogs();
 
 const corsOptions = {
     origin: process.env.ALLOWED_ORIGIN,
