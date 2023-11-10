@@ -10,7 +10,8 @@ const options = {
     timeout: 3000, // Default is 3000
 };
 
-// This behaves as a singleton.
-const meross = new MerossCloud(options);
+const meross = {};
+meross.merossCloud = new MerossCloud(options);
+meross.garageDevice = null;
 
 module.exports = meross;
