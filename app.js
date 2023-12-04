@@ -10,6 +10,7 @@ const interceptLogs = require('./utils/log-interceptor');
 
 const indexRouter = require('./routes/index');
 const garageRouter = require('./routes/garage');
+const tvRouter = require('./routes/tv');
 const app = express();
 
 // view engine setup
@@ -30,6 +31,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/garage', garageRouter);
+app.use('/tv', tvRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
