@@ -4,18 +4,18 @@ const axios = require('axios');
 const apiBaseURI = `http://${process.env.ROKU_IP_ADDRESS}:8060`;
 
 const turnOnTV = async () => {
-    return sendHTTPRequest('PowerOn');
+    return sendKeyPressCommand('PowerOn');
 };
 
 const switchInputToHDMI1 = async () => {
-    return sendHTTPRequest('InputHDMI1');
+    return sendKeyPressCommand('InputHDMI1');
 };
 
 const turnOffTV = async () => {
-    return sendHTTPRequest('PowerOff');
+    return sendKeyPressCommand('PowerOff');
 };
 
-const sendHTTPRequest = async (command) => {
+const sendKeyPressCommand = async (command) => {
     const options = {
         method: 'POST',
         url: `${apiBaseURI}/keypress/${command}`,
@@ -31,4 +31,20 @@ const sendHTTPRequest = async (command) => {
     }
 };
 
-module.exports = { turnOnTV, switchInputToHDMI1, turnOffTV };
+const getInfo = () => {
+    const options = {
+        method: 'GET',
+        url: `${apiBaseURI}/query/device-info`,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+    try {
+        return axios(options);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+module.exports = { turnOnTV, switchInputToHDMI1, turnOffTV, getInfo };

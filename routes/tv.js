@@ -5,7 +5,7 @@ const router = express.Router();
 /**
  * Turn on the TV and switch input to Apple TV.
  */
-router.post('/appleTV', async function (req, res, next) {
+router.post('/on', async function (req, res, next) {
     await roku.turnOnTV();
     // Necessary to wait until next command can be supplied.
     await new Promise((resolve) => setTimeout(resolve, 2000));
