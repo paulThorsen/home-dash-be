@@ -24,7 +24,7 @@ TVWebsocket.on('connection', function connection(ws) {
             .subscribe(tvStateSubject);
     }
     // Connect subject to ws
-    const subcription = tvStateSubject.subscribe((state) => ws.send(state));
+    const subcription = tvStateSubject.subscribe((state) => ws.send(JSON.stringify({ state })));
     // RM the subscription to avoid memory leaks
     ws.on('close', () => {
         subcription.unsubscribe();
