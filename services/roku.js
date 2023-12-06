@@ -27,7 +27,7 @@ const sendKeyPressCommand = async (command) => {
     try {
         return await axios(options);
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
 };
 
@@ -43,7 +43,7 @@ const getInfo = () => {
     try {
         return axios(options);
     } catch (e) {
-        console.log(e);
+        console.error(e);
     }
 };
 

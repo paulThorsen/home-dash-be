@@ -10,6 +10,7 @@ router.post('/on', async function (req, res, next) {
     // Necessary to wait until next command can be supplied.
     await new Promise((resolve) => setTimeout(resolve, 2000));
     await roku.switchInputToHDMI1();
+    console.log('TV turned on');
     res.send();
 });
 
@@ -18,6 +19,7 @@ router.post('/on', async function (req, res, next) {
  */
 router.post('/off', async function (req, res, next) {
     await roku.turnOffTV();
+    console.log('TV turned off');
     res.send();
 });
 
