@@ -1,5 +1,3 @@
-require('../utils/dotenv-control');
-
 const MerossCloud = require('meross-cloud');
 const options = {
     email: process.env.MEROSS_EMAIL,

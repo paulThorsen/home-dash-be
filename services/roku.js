@@ -1,4 +1,3 @@
-require('../utils/dotenv-control');
 const axios = require('axios');
 
 const apiBaseURI = `http://${process.env.ROKU_IP_ADDRESS}:8060`;
