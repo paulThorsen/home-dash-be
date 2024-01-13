@@ -6,6 +6,7 @@ const debug = require('debug')('home-dash-be:server');
 const http = require('http');
 const garageWebsocket = require('../websockets/garage');
 const TVWebsocket = require('../websockets/tv');
+const weatherWebsocket = require('../websockets/weather');
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
@@ -27,6 +28,10 @@ server.on('upgrade', (req, socket, head) => {
     else if (req.url === '/tv/state')
         TVWebsocket.handleUpgrade(req, socket, head, (ws) => {
             TVWebsocket.emit('connection', ws, req);
+        });
+    else if (req.url === '/weather')
+        weatherWebsocket.handleUpgrade(req, socket, head, (ws) => {
+            weatherWebsocket.emit('connection', ws, req);
         });
 });
 

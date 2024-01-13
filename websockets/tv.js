@@ -12,6 +12,7 @@ TVWebsocket.on('connection', function connection(ws) {
     if (!tvStateSubject.value) {
         rxjs.interval(1000)
             .pipe(
+                rxjs.startWith(0),
                 rxjs.switchMap(() => rxjs.from(roku.getInfo())),
                 rxjs.map((res) => {
                     const jsonObj = JSON.parse(convert.xml2json(res.data));
