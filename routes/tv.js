@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/on', async function (req, res, next) {
     await roku.turnOnTV();
     // Necessary to wait until next command can be supplied.
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     await roku.switchInputToHDMI1();
     console.log('TV turned on');
     res.send();
