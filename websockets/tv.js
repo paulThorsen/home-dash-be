@@ -13,7 +13,7 @@ TVWebsocket.on('connection', function connection(ws) {
             .pipe(
                 rxjs.startWith(0),
                 rxjs.switchMap(() => rxjs.from(roku.getInfo())),
-                rxjs.map((res) => roku.isTvOn(res.data))
+                rxjs.map((res) => roku.isTvOn(res))
             )
             .subscribe(tvStateSubject);
     }
