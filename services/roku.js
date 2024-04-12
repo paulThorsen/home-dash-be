@@ -19,7 +19,7 @@ const turnOffTV = async () => {
 };
 
 const isTvOn = (info) => {
-    const jsonObj = JSON.parse(convert.xml2json(info));
+    const jsonObj = JSON.parse(convert.xml2json(info.data));
     const powerModeObj = jsonObj['elements'][0]['elements'].find(
         (el) => el['name'] === 'power-mode'
     );
